@@ -33,6 +33,7 @@ function objToSql(ob) {
 
 // Object for all our SQL statement functions.
 var orm = {
+    // Return all tables
     selectAll: function (tableInput, cb) {
         var queryString = "SELECT * FROM " + tableInput + ";";
         connection.query(queryString, function (err, results) {
@@ -43,6 +44,7 @@ var orm = {
         });
     },
 
+    // Insert new entry
     insertOne: function (table, cols, vals, cb) {
         var queryString = "INSERT INTO " + table;
 
@@ -63,6 +65,7 @@ var orm = {
         });
     },
 
+    // Update a table entry
     updateOne: function (table, objColVals, condition, cb) {
         var queryString = "UPDATE " + table;
         queryString += "SET";
@@ -79,19 +82,6 @@ var orm = {
         });
     },
 
-    // delete: function (table, condition, cb) {
-    //     var queryString = "DELETE FROM " + table;
-    //     queryString += " WHERE ";
-    //     queryString += condition;
-
-    //     connection.query(queryString, function (err, result) {
-    //         if (err) {
-    //             throw err;
-    //         }
-
-    //         cb(result);
-    //     });
-    // }
 };
 
 // Export the orm object for the model (cat.js).
